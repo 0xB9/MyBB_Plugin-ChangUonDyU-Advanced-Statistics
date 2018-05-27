@@ -3,13 +3,13 @@
  * MyBB: [AJAX] ChangUonDyU - Advanced Statistics
  *
  * File: changstats.php
- * 
+ *
  * Authors: ChangUonDyU, Vintagedaddyo
  *
  * MyBB Version: 1.8
  *
  * Plugin Version: 1.0.2
- * 
+ *
  */
 
 if(!defined("IN_MYBB"))
@@ -53,12 +53,12 @@ function changstats_activate()
 	);
     $db->insert_query("settinggroups", $group);
 	$gid = $db->insert_id();
-	
+
 	// Insert Settings
     $s[] = array(
 		'name'			=> 'changstats_turn',
         'title'         => $lang->changstats_title_setting_1,
-        'description'   => $lang->changstats_description_setting_1,    
+        'description'   => $lang->changstats_description_setting_1,
 		'optionscode'	=> 'yesno',
 		'value'			=> 1,
 		'disporder'		=> 10,
@@ -68,17 +68,17 @@ function changstats_activate()
 	$s[] = array(
 		'name' 			=> 'changstats_result',
         'title'         => $lang->changstats_title_setting_2,
-        'description'   => $lang->changstats_description_setting_2,    
+        'description'   => $lang->changstats_description_setting_2,
 		'optionscode' 	=> 'text',
         'value' 		=> '10,20,30,40,50',
 		'disporder' 	=> 20,
 		'gid' 			=> intval($gid)
 	);
-	
+
 	$s[] = array(
 		'name' 			=> 'changstats_refreshtime',
         'title'         => $lang->changstats_title_setting_3,
-        'description'   => $lang->changstats_description_setting_3,    
+        'description'   => $lang->changstats_description_setting_3,
 		'optionscode' 	=> 'text',
         'value' 		=> 20,
 		'disporder' 	=> 30,
@@ -88,7 +88,7 @@ function changstats_activate()
 	$s[] = array(
 		'name' 			=> 'changstats_disforguest',
         'title'         => $lang->changstats_title_setting_4,
-        'description'   => $lang->changstats_description_setting_4,    
+        'description'   => $lang->changstats_description_setting_4,
 		'optionscode' 	=> 'yesno',
         'value' 		=> 1,
 		'disporder' 	=> 35,
@@ -98,7 +98,7 @@ function changstats_activate()
 	$s[] = array(
 		'name' 			=> 'changstats_disbutton',
         'title'         => $lang->changstats_title_setting_5,
-        'description'   => $lang->changstats_description_setting_5,    
+        'description'   => $lang->changstats_description_setting_5,
 		'optionscode' 	=> 'yesno',
         'value' 		=> 1,
 		'disporder' 	=> 36,
@@ -110,7 +110,7 @@ function changstats_activate()
 	$s[] = array(
 		'name' 			=> 'changstats_customtab',
         'title'         => $lang->changstats_title_setting_6,
-        'description'   => $db->escape_string($lang->changstats_description_setting_6),    
+        'description'   => $db->escape_string($lang->changstats_description_setting_6),
 		'optionscode' 	=> 'textarea',
         'value' 		=> 'Order1 title|1,2,5
 Order2 title|21,15,7
@@ -118,11 +118,11 @@ Order3 title|14',
 		'disporder' 	=> 40,
 		'gid' 			=> intval($gid)
 	);
-		
+
 	$s[] = array(
 		'name' 			=> 'changstats_exclforum',
         'title'         => $lang->changstats_title_setting_7,
-        'description'   => $lang->changstats_description_setting_7,    
+        'description'   => $lang->changstats_description_setting_7,
 		'optionscode' 	=> 'text',
         'value' 		=> '',
 		'disporder' 	=> 45,
@@ -143,7 +143,7 @@ Order3 title|14',
 	$s[] = array(
 		'name' 			=> 'changstats_showlastposter',
 		'title' 		=> 'Show LastPoster ?',
-		'description' 	=> '',		
+		'description' 	=> '',
 		'optionscode' 	=> 'yesno',
         'value' 		=> 1,
 		'disporder' 	=> 60,
@@ -184,7 +184,7 @@ Order3 title|14',
 	$s[] = array(
 		'name' 			=> 'changstats_dateformat',
         'title'         => $lang->changstats_title_setting_8,
-        'description'   => $lang->changstats_description_setting_8,    
+        'description'   => $lang->changstats_description_setting_8,
 		'optionscode' 	=> 'text',
         'value' 		=> 'm-d, h:i A',
 		'disporder' 	=> 100,
@@ -194,7 +194,7 @@ Order3 title|14',
 	$s[] = array(
 		'name' 			=> 'changstats_trim_threadtitle',
         'title'         => $lang->changstats_title_setting_9,
-        'description'   => $lang->changstats_description_setting_9,    
+        'description'   => $lang->changstats_description_setting_9,
 		'optionscode' 	=> 'text',
         'value' 		=> '35',
 		'disporder' 	=> 110,
@@ -204,7 +204,7 @@ Order3 title|14',
 	$s[] = array(
 		'name' 			=> 'changstats_trim_forumtitle',
         'title'         => $lang->changstats_title_setting_10,
-        'description'   => $lang->changstats_description_setting_10,    
+        'description'   => $lang->changstats_description_setting_10,
 		'optionscode' 	=> 'text',
         'value' 		=> '21',
 		'disporder' 	=> 120,
@@ -214,19 +214,19 @@ Order3 title|14',
 	$s[] = array(
 		'name' 			=> 'changstats_trim_username',
         'title'         => $lang->changstats_title_setting_11,
-        'description'   => $lang->changstats_description_setting_11,    
+        'description'   => $lang->changstats_description_setting_11,
 		'optionscode' 	=> 'text',
         'value' 		=> '14',
 		'disporder' 	=> 130,
 		'gid' 			=> intval($gid)
 	);
-	
+
 	///// TOP SETTINGS /////
 
 	$s[] = array(
 		'name' 			=> 'changstats_topcol_width',
         'title'         => $lang->changstats_title_setting_12,
-        'description'   => $db->escape_string($lang->changstats_description_setting_12),    
+        'description'   => $db->escape_string($lang->changstats_description_setting_12),
 		'optionscode' 	=> 'text',
         'value' 		=> '150',
 		'disporder' 	=> 200,
@@ -236,7 +236,7 @@ Order3 title|14',
 	$s[] = array(
 		'name' 			=> 'changstats_top_trim_threadtitle',
         'title'         => $lang->changstats_title_setting_13,
-        'description'   => $lang->changstats_description_setting_13,    
+        'description'   => $lang->changstats_description_setting_13,
 		'optionscode' 	=> 'text',
         'value' 		=> '21',
 		'disporder' 	=> 210,
@@ -246,7 +246,7 @@ Order3 title|14',
 	$s[] = array(
 		'name' 			=> 'changstats_top_trim_forumtitle',
         'title'         => $lang->changstats_title_setting_14,
-        'description'   => $lang->changstats_description_setting_14,    
+        'description'   => $lang->changstats_description_setting_14,
 		'optionscode' 	=> 'text',
         'value' 		=> '21',
 		'disporder' 	=> 220,
@@ -256,7 +256,7 @@ Order3 title|14',
 	$s[] = array(
 		'name' 			=> 'changstats_top_trim_username',
         'title'         => $lang->changstats_title_setting_15,
-        'description'   => $lang->changstats_description_setting_15,    
+        'description'   => $lang->changstats_description_setting_15,
 		'optionscode' 	=> 'text',
         'value' 		=> '21',
 		'disporder' 	=> 230,
@@ -266,21 +266,21 @@ Order3 title|14',
 	$s[] = array(
 		'name' 			=> 'changstats_joindate',
         'title'         => $lang->changstats_title_setting_16,
-        'description'   => $lang->changstats_description_setting_16,    
+        'description'   => $lang->changstats_description_setting_16,
 		'optionscode' 	=> 'text',
         'value' 		=> 'm-d',
 		'disporder' 	=> 240,
 		'gid' 			=> intval($gid)
 	);
-		
-		
+
+
 	foreach ($s as $ones)
 	{
 		$db->insert_query("settings", $ones);
 	}
 
 	rebuild_settings();
-	
+
 	// Create template
 
 	$templates['changuondyu_stats_main'] = <<<EOT
@@ -422,7 +422,7 @@ changstats_top_forum();
 \$autorefresh
 </script>
 EOT;
-	
+
 	$templates['changuondyu_stats_refreshbutton'] = <<<EOT
 	<input type="button" class="button" value="{\$lang->changstats_refresh}" onclick="changstats_post();" />
 EOT;
@@ -438,7 +438,7 @@ EOT;
 	\$hotthread
 	\$mostpopularforum
 EOT;
-	
+
 	$templates['changuondyu_latestpost'] = <<<EOT
 	<table cellpadding="1" cellspacing="0" border="0" width="100%">
 <tr>
@@ -483,8 +483,8 @@ EOT;
 	<a href="javascript:cswitch(\$ordert);">\$menuname</a>
 	</td>
 EOT;
-	
-	
+
+
 	foreach($templates as $title => $template)
 	{
 		$insert_template = array(
@@ -500,19 +500,19 @@ EOT;
 function changstats_deactivate()
 {
 	global $db;
-	
+
 	$setting_groupname = 'chang_stats';
-	
+
 	// Delete settings
 
 	$query = $db->query("SELECT gid FROM ".TABLE_PREFIX."settinggroups WHERE name='$setting_groupname' LIMIT 1");
 	$qinfo = $db->fetch_array($query);
 	$db->query("DELETE FROM ".TABLE_PREFIX."settings WHERE gid='$qinfo[gid]'");
-	
+
 	// Delete settings group
 
 	$db->query("DELETE FROM ".TABLE_PREFIX."settinggroups WHERE name='$setting_groupname'");
-	
+
 	// Delete templates
 
 	$deletetemplates = array('changuondyu_stats_main',
@@ -536,10 +536,10 @@ function changstats_getdata()
 {
 	global $db,$mybb,$templates,$theme,$cache,$lang;
 	$lang->load('changstats');
-	
+
 	if ($mybb->settings['changstats_turn'])
 	{
-	
+
 		$hiddenforum = '0';
 		$forumpermissions = forum_permissions();
 		foreach($forumpermissions as $forumid => $permiss)
@@ -549,23 +549,23 @@ function changstats_getdata()
 					$hiddenforum .= ','.$forumid;
 				}
 		}
-		
+
 		if ($mybb->settings['changstats_exclforum'])
 		{
 			$hiddenforum .= ",".$mybb->settings['changstats_exclforum'];
 		}
-	
+
 		// get result value
 
 		$cresult = $_REQUEST['result'];
-			 
+
 		// AJAX GET NEW POST
 
 		$listr2 = explode("," , $mybb->settings['changstats_result']);
 		if ($cresult <= $listr2[sizeof($listr2)-1])
 		{
 			// tat ca cac bai viet moi
-			
+
 			if ($_REQUEST['do'] == 'allforum' || $_REQUEST['do'] == 'inforum')
 			{
 				$threadclimit = $mybb->settings['changstats_trim_threadtitle']; // thread title trim
@@ -583,7 +583,7 @@ function changstats_getdata()
 					$foruminid = $_REQUEST['listforumid'];
 					$latestpostq = $db->query("SELECT $queryfield FROM ". TABLE_PREFIX ."threads WHERE fid IN ($foruminid) AND fid NOT IN ($hiddenforum) AND visible = 1 ORDER BY lastpost DESC LIMIT $cresult");
 				}
-				
+
 				while ($latestpost = $db->fetch_array($latestpostq))
 				{
 					$latestpost[fulltitle] = $latestpost[subject];
@@ -592,6 +592,7 @@ function changstats_getdata()
 					$latestpost[lastpost] = my_date($mybb->settings['changstats_dateformat'], $latestpost[lastpost]);
 
 					// trim thread title
+					$latestpost[subject] = htmlspecialchars_uni($latestpost[subject]);
 					if ($threadclimit > 0 && my_strlen($latestpost[subject]) > $threadclimit)
 					{
 						$latestpost[subject] = my_substr($latestpost[subject], 0, $threadclimit).'...';
@@ -624,7 +625,7 @@ function changstats_getdata()
 					$qinfo = $db->fetch_array($query);
 					$vlastvisit = $qinfo['lastvisit'];
 					$pstatus = '';
-					if ($vlastvisit > $clastpost) 
+					if ($vlastvisit > $clastpost)
 					{
 						$pstatus = 'old';
 					}
@@ -661,10 +662,10 @@ function changstats_getdata()
 						$top[username] = my_substr($top[username], 0, $topuserclimit).'...';
 					}
 					$top[username] = format_name($top[username], $top[usergroup], $top[displaygroup]);
- 
+
 					$colum1 = "<a href='member.php?action=profile&uid=".$top[uid]."'>".$top[username]."</a>";
 					$colum2 = my_date($mybb->settings['changstats_joindate'], $top[regdate]);
- 
+
 					eval("\$chang_top_element .= \"".$templates->get("changuondyu_top_bit")."\";");
 				}
 				$h1 = $lang->changstats_username;
@@ -672,8 +673,8 @@ function changstats_getdata()
 				eval("\$changuondyu_topoutput = \"".$templates->get("changuondyu_top_head")."\";");
 				echo $changuondyu_topoutput;
 			}
- 
- 
+
+
 			/////////////// Top Poster //////////////////
 			if ($_REQUEST['do'] == 'topposter')
 			{
@@ -686,10 +687,10 @@ function changstats_getdata()
 						$top[username] = my_substr($top[username], 0, $topuserclimit).'...';
 					}
 					$top[username] = format_name($top[username], $top[usergroup], $top[displaygroup]);
- 
+
 					$colum1 = "<a href='member.php?action=profile&uid=".$top[uid]."'>".$top[username]."</a>";
 					$colum2 = $top[postnum];
- 
+
 					eval("\$chang_top_element .= \"".$templates->get("changuondyu_top_bit")."\";");
 				}
 				$h1 = $lang->changstats_username;
@@ -697,7 +698,7 @@ function changstats_getdata()
 				eval("\$changuondyu_topoutput = \"".$templates->get("changuondyu_top_head")."\";");
 				echo $changuondyu_topoutput;
 			}
-			
+
 			/////////////// Top Thanked //////////////////
 			if ($_REQUEST['do'] == 'topthank' && $db->field_exists("thxcount","users"))
 			{
@@ -710,10 +711,10 @@ function changstats_getdata()
 						$top[username] = my_substr($top[username], 0, $topuserclimit).'...';
 					}
 					$top[username] = format_name($top[username], $top[usergroup], $top[displaygroup]);
- 
+
 					$colum1 = "<a href='member.php?action=profile&uid=".$top[uid]."'>".$top[username]."</a>";
 					$colum2 = $top[thxcount];
- 
+
 					eval("\$chang_top_element .= \"".$templates->get("changuondyu_top_bit")."\";");
 				}
 				$h1 = $lang->changstats_username;
@@ -721,7 +722,7 @@ function changstats_getdata()
 				eval("\$changuondyu_topoutput = \"".$templates->get("changuondyu_top_head")."\";");
 				echo $changuondyu_topoutput;
 			}
- 
+
 			///////////// Most view thread ///////////////////
 			if ($_REQUEST['do'] == 'mostview')
 			{
@@ -733,10 +734,10 @@ function changstats_getdata()
 					{
 						$top[subject] = my_substr($top[subject], 0, $topthreadclimit).'...';
 					}
- 
-					$colum1 = "<a href='showthread.php?tid=".$top[tid]."'>".$top[subject]."</a>";
+
+					$colum1 = "<a href='showthread.php?tid=".$top[tid]."'>".htmlspecialchars_uni($top[subject])."</a>";
 					$colum2 = $top[views];
- 
+
 					eval("\$chang_top_element .= \"".$templates->get("changuondyu_top_bit")."\";");
 				}
 				$h1 = $lang->changstats_thread;
@@ -756,10 +757,10 @@ function changstats_getdata()
 					{
 						$top[subject] = my_substr($top[subject], 0, $topthreadclimit).'...';
 					}
- 
-					$colum1 = "<a href='showthread.php?tid=".$top[tid]."'>".$top[subject]."</a>";
+
+					$colum1 = "<a href='showthread.php?tid=".$top[tid]."'>".htmlspecialchars_uni($top[subject])."</a>";
 					$colum2 = $top[replies];
- 
+
 					eval("\$chang_top_element .= \"".$templates->get("changuondyu_top_bit")."\";");
 				}
 				$h1 = $lang->changstats_thread;
@@ -779,10 +780,10 @@ function changstats_getdata()
 					{
 						$top[name] = my_substr($top[name], 0, $topforumclimit).'...';
 					}
- 
+
 					$colum1 = "<a href='forumdisplay.php?fid=".$top[tid]."'>".$top[name]."</a>";
 					$colum2 = $top[posts];
- 
+
 					eval("\$chang_top_element .= \"".$templates->get("changuondyu_top_bit")."\";");
 				}
 				$h1 = $lang->changstats_forum;
@@ -798,7 +799,7 @@ function changstats_maindisplay()
 {
 	global $mybb,$templates,$theme,$lang,$changstats;
 	$lang->load('changstats');
-	
+
 	if ($mybb->settings['changstats_turn'])
 	{
 		// Create List of result
@@ -807,7 +808,7 @@ function changstats_maindisplay()
 		{
 			$choosekq .= "<option value='$result'>$result</option>";
 		}
-		
+
 		// Gen Sp Tab
 		$listorder = preg_replace("#(\r\n|\r|\n)#s","+#+",$mybb->settings['changstats_customtab']);
 		$listorder = explode("+#+", $listorder);
@@ -826,25 +827,25 @@ function changstats_maindisplay()
 		}
 		$ordert2 = $ordert + 1;
 		$ordert3 = $ordert + 3;
-	
+
 		// Refresh button
 		if ($mybb->settings['changstats_disbutton'])
 		{
 			eval("\$refreshbutton = \"".$templates->get("changuondyu_stats_refreshbutton")."\";");
 		}
-	
+
 		// Gen element of top
 		$topposter = "<option value='topposter'>$lang->changstats_topposter</option>";
 		$newmember = "<option value='newmember'>$lang->changstats_newmember</option>";
 		$topthank = "<option value='topthank'>$lang->changstats_topthank</option>";
-	
+
 		$mostviewthread = "<option value='mostview'>$lang->changstats_mostviewthread</option>";
 		$hotthread = "<option value='hotthread'>$lang->changstats_hotthread</option>";
 		$mostpopularforum = "<option value='mostpopular'>$lang->changstats_mostpopularforum</option>";
-	
+
 		eval("\$choosetop_user .= \"".$templates->get("changuondyu_stats_topuser")."\";");
 		eval("\$choosetop_forum .= \"".$templates->get("changuondyu_stats_topforum")."\";");
-	
+
 		// AUTO REFRESH
 		if ($mybb->user['uid'] == 0)
 		{
